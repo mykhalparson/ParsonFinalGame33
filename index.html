@@ -62,7 +62,7 @@
   {
       this.physics.pause();
 
-      player.setTint(0xff0000);
+      player.setTint(008000);
 
       player.anims.play('turn');
 
@@ -76,10 +76,10 @@
     this.load.image('world', 'assets/thugger.png');
     this.load.spritesheet('dude', 'assets/spritemap.png', {frameWidth: 45, frameHeight:49});
     this.load.image('platform', 'assets/slime2.png') ;
-    this.load.image('emmy', 'assets/emmy.png');
+    this.load.image('coin', 'assets/emmy.png', {frameWidth: 18, frameHeight:24});
     this.load.image('bomb', 'assets/snake.png');
   }
-
+//wow
   function create ()
   {
 
@@ -120,25 +120,25 @@
 
 
     stars = this.physics.add.group({
-    key: 'emmy',
+    key: 'coin',
     repeat: 11,
     setXY: { x: 12, y: 0, stepX: 70 },
     setScale: {
-      x:0.1,
-      y:0.1,
+      x:.030,
+      y:.030,
     }
 });
 
 
 stars.children.iterate(function (child) {
 
-  child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+  child.setBounceY(Phaser.Math.FloatBetween(0.3, 0.8));
 
 });
   bombs = this.physics.add.group();
   this.physics.add.collider(stars, platforms);
   this.physics.add.overlap(player, stars, collectStar, null, this);
-  scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#FF6347' });
+  scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#228B22' });
   this.physics.add.collider(bombs, platforms);
   this.physics.add.collider(player, bombs, hitBomb, null, this);
 }
